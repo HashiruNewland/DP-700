@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "T-SQL and PySpark"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d8e9d97e-fbb7-90d5-478f-53b02ee8f617"
+  }
+}

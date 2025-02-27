@@ -1,0 +1,246 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "ForeignKeyReferenceTable",
+        "sourceLineageTag": "[dbo].[ForeignKeyReferenceTable]",
+        "columns": [
+          {
+            "name": "c1",
+            "dataType": "int64",
+            "sourceColumn": "c1",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c1",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "ForeignKeyReferenceTable",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "ForeignKeyTable",
+        "sourceLineageTag": "[dbo].[ForeignKeyTable]",
+        "columns": [
+          {
+            "name": "c1",
+            "dataType": "int64",
+            "sourceColumn": "c1",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c1",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c2",
+            "dataType": "int64",
+            "sourceColumn": "c2",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "ForeignKeyTable",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "PrimaryKeyTable",
+        "sourceLineageTag": "[dbo].[PrimaryKeyTable]",
+        "columns": [
+          {
+            "name": "c1",
+            "dataType": "int64",
+            "sourceColumn": "c1",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c1",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c2",
+            "dataType": "int64",
+            "sourceColumn": "c2",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "PrimaryKeyTable",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "UniqueConstraintTable",
+        "sourceLineageTag": "[dbo].[UniqueConstraintTable]",
+        "columns": [
+          {
+            "name": "c1",
+            "dataType": "int64",
+            "sourceColumn": "c1",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c1",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c2",
+            "dataType": "int64",
+            "sourceColumn": "c2",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "UniqueConstraintTable",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "e75c9d05a3a3e87dc3a703d2038f64fe",
+        "fromTable": "ForeignKeyTable",
+        "fromColumn": "c1",
+        "toTable": "ForeignKeyReferenceTable",
+        "toColumn": "c1",
+        "relyOnReferentialIntegrity": true,
+        "securityFilteringBehavior": "none"
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}
