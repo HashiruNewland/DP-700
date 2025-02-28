@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Lakehouse",
-    "displayName": "DojoLH"
+    "type": "Dataflow",
+    "displayName": "Ingest and Transform DG"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "c9274451-8e68-b486-4e9f-4f620d1d63c5"
+    "logicalId": "332dbf6a-46b4-9fc6-4663-b684a28c4932"
   }
 }

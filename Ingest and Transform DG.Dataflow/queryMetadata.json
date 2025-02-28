@@ -1,0 +1,23 @@
+{
+  "formatVersion": "202409",
+  "lastModified": null,
+  "editingSession": {
+    "computeEngineSettings": {
+      "allowFastCopy": true
+    },
+    "editingSessionMashup": {
+      "mashupName": "Ingest and Transform DG",
+      "queryGroups": [],
+      "documentLocale": "en-US",
+      "queriesMetadata": {},
+      "connectionOverrides": [],
+      "fastCombine": false,
+      "allowNativeQueries": true,
+      "hostProperties": {
+        "dataflowRefreshOutputFileFormat": "Parquet",
+        "enableDateTimeFieldsForStaging": "true",
+        "enablePublishWithoutLoadedQueries": "true"
+      }
+    }
+  }
+}

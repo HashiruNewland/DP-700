@@ -160,6 +160,60 @@
         ]
       },
       {
+        "name": "PrimaryKeyTable-Clone",
+        "sourceLineageTag": "[dbo].[PrimaryKeyTable-Clone]",
+        "columns": [
+          {
+            "name": "c1",
+            "dataType": "int64",
+            "sourceColumn": "c1",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c1",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "c2",
+            "dataType": "int64",
+            "sourceColumn": "c2",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "c2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "PrimaryKeyTable-Clone",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "UniqueConstraintTable",
         "sourceLineageTag": "[dbo].[UniqueConstraintTable]",
         "columns": [
