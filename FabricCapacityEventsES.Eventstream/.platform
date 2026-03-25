@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Lakehouse",
-    "displayName": "LabLakehouse"
+    "type": "Eventstream",
+    "displayName": "FabricCapacityEventsES"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "d4d84dd1-cc2d-b278-410a-59d7a5b81a97"
+    "logicalId": "d51eb5a9-7e82-bcab-4359-c1f8d0016977"
   }
 }

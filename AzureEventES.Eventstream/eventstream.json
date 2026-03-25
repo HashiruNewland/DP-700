@@ -1,0 +1,896 @@
+{
+  "sources": [
+    {
+      "id": "c03c8417-6bcd-4dde-b7f9-b8b47aa82adb",
+      "name": "EventLinks",
+      "type": "AzureBlobStorageEvents",
+      "properties": {
+        "azureBlobStorageEvents": [
+          {
+            "id": "3a66fdb4-6791-459d-b005-ee8315981f57",
+            "azureResourceId": "/subscriptions/fe9f1625-01d2-4418-96f9-586f3efeff56/resourceGroups/dp-700/providers/Microsoft.Storage/storageAccounts/azureeventscapture",
+            "includedEventTypes": [
+              "Microsoft.Storage.BlobCreated",
+              "Microsoft.Storage.BlobDeleted",
+              "Microsoft.Storage.BlobRenamed",
+              "Microsoft.Storage.BlobTierChanged",
+              "Microsoft.Storage.DirectoryCreated",
+              "Microsoft.Storage.DirectoryDeleted",
+              "Microsoft.Storage.DirectoryRenamed",
+              "Microsoft.Storage.BlobInventoryPolicyCompleted",
+              "Microsoft.Storage.AsyncOperationInitiated",
+              "Microsoft.Storage.LifecyclePolicyCompleted"
+            ]
+          }
+        ],
+        "streamEvents": true
+      }
+    }
+  ],
+  "destinations": [
+    {
+      "id": "3b59096b-e9e5-43b0-b4b2-12d63f1655e2",
+      "name": "AzureEvents",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "b95a0373-4ed4-8d1b-4376-b7df1e2dae6e",
+        "databaseName": "AzureEventEH",
+        "tableName": "AzureEvents",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "specversion",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fabricsubject",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "source",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "subject",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fabricsource",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "data",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "api",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "requestId",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "eTag",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "contentType",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "contentLength",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "blobType",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "accessTier",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "blobUrl",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "url",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "sequencer",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "identity",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "storageDiagnostics",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "batchId",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              },
+              {
+                "name": "SystemTime",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "87cc87be-fa31-43ca-8212-c109361aa41c",
+      "name": "Lakehouse1",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "db2e8306-955e-ba33-4eb4-70d30cf308d9",
+        "schema": "dbo",
+        "deltaTable": "SQLsecondDest",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "SqlCode"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "SqlCode",
+          "schema": {
+            "columns": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "cdabad80-4acf-483b-bf53-ea8bc6939673",
+      "name": "3837cf43-2288-4898-95f6-a0f998149436",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "DirectIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "b95a0373-4ed4-8d1b-4376-b7df1e2dae6e",
+        "tableName": "FromAzureEvenstStorage",
+        "connectionName": "AzureEventES_6m6jny",
+        "mappingRuleName": "FromAzureEvenstStorage_mapping"
+      },
+      "inputNodes": [
+        {
+          "name": "AzureEventES-stream"
+        }
+      ]
+    },
+    {
+      "id": "e93e7bd7-887a-48a8-afcd-663da8749340",
+      "name": "Activator",
+      "type": "Activator",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "fd8a4edf-e50b-b6da-458a-05bf7e62f378",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "AzureEventES-stream",
+          "schemaName": "iqdbn0"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "AzureEventES-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "source",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fabricsubject",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "specversion",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fabricsource",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "subject",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "data",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "api",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "requestId",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "eTag",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "contentType",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "contentLength",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "blobType",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "accessTier",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "blobUrl",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "url",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "sequencer",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "identity",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "storageDiagnostics",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "batchId",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ebd8f811-949a-4f02-8403-ce11792458c9",
+      "name": "Lakehouse",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "db2e8306-955e-ba33-4eb4-70d30cf308d9",
+        "schema": "dbo",
+        "deltaTable": "NewTble",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "SqlCode"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "SqlCode",
+          "schema": {
+            "columns": []
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "f16d6111-1bfe-4cb8-b0e6-7f5d71951449",
+      "name": "AzureEventES-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "EventLinks"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "ManageFields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "AzureEventES-stream",
+          "schemaName": "iqdbn0"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "time",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "time"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "specversion",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "specversion"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "id",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "id"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "fabricsubject",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "fabricsubject"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "type",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "type"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "source",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "source"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "subject",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "subject"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "fabricsource",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "fabricsource"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "data",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "data"
+          },
+          {
+            "type": "FunctionCall",
+            "properties": {
+              "functionName": "SystemTimestamp",
+              "arguments": []
+            },
+            "alias": "SystemTime"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "AzureEventES-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "source",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fabricsubject",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "specversion",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fabricsource",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "subject",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "data",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "api",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "requestId",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "eTag",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "contentType",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "contentLength",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "blobType",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "accessTier",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "blobUrl",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "url",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "sequencer",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "identity",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "storageDiagnostics",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "batchId",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "SqlCode",
+      "type": "SQL",
+      "inputNodes": [
+        {
+          "name": "AzureEventES-stream",
+          "schemaName": "iqdbn0"
+        }
+      ],
+      "properties": {
+        "query": "-- **************************************************************\n-- Here are docs to help you get started with ASAQL\n-- EventStream SQL Operator Intro - https://aka.ms/es-sql-intro\n-- ASAQL Language Reference - https://aka.ms/asaql-language-ref\n-- **************************************************************\n\nSELECT * INTO [Lakehouse] FROM [AzureEventES-stream]",
+        "advancedSettings": {
+          "eventsOutOfOrderPolicy": "Drop",
+          "eventsOutOfOrderMaxDelayInSeconds": 0,
+          "eventsLateArrivalMaxDelayInSeconds": 5
+        }
+      },
+      "inputSchemas": [
+        {
+          "name": "AzureEventES-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "source",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fabricsubject",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "specversion",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fabricsource",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "subject",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "data",
+                "type": "Record",
+                "fields": [
+                  {
+                    "name": "api",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "requestId",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "eTag",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "contentType",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "contentLength",
+                    "type": "BigInt",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "blobType",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "accessTier",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "blobUrl",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "url",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "sequencer",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "identity",
+                    "type": "Nvarchar(max)",
+                    "fields": null,
+                    "items": null
+                  },
+                  {
+                    "name": "storageDiagnostics",
+                    "type": "Record",
+                    "fields": [
+                      {
+                        "name": "batchId",
+                        "type": "Nvarchar(max)",
+                        "fields": null,
+                        "items": null
+                      }
+                    ],
+                    "items": null
+                  }
+                ],
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}

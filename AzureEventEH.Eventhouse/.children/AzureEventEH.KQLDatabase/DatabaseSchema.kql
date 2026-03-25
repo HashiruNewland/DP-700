@@ -1,0 +1,10 @@
+// KQL script
+// Use management commands in this script to configure your database items, such as tables, functions, materialized views, and more.
+
+
+.create-merge table AzureEvents (['time']:string, specversion:string, id:string, fabricsubject:string, type:string, source:string, subject:string, fabricsource:string, data:dynamic, SystemTime:datetime) 
+.create-merge table FromAzureEvenstStorage (fabricsource:string, fabricsubject:string, type:string, subject:string, specversion:real, ['time']:datetime, source:string, id:guid, data:dynamic) 
+.create-or-alter table FromAzureEvenstStorage ingestion json mapping 'FromAzureEvenstStorage_mapping'
+```
+[{"Properties":{"Path":"$['fabricsource']"},"column":"fabricsource","datatype":""},{"Properties":{"Path":"$['fabricsubject']"},"column":"fabricsubject","datatype":""},{"Properties":{"Path":"$['type']"},"column":"type","datatype":""},{"Properties":{"Path":"$['subject']"},"column":"subject","datatype":""},{"Properties":{"Path":"$['specversion']"},"column":"specversion","datatype":""},{"Properties":{"Path":"$['time']"},"column":"time","datatype":""},{"Properties":{"Path":"$['source']"},"column":"source","datatype":""},{"Properties":{"Path":"$['id']"},"column":"id","datatype":""},{"Properties":{"Path":"$['data']"},"column":"data","datatype":""}]
+```
