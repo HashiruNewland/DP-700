@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Reflex",
+    "displayName": "AlertMe"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fd8a4edf-e50b-b6da-458a-05bf7e62f378"
+  }
+}

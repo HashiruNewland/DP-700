@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "AzureEventES"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "58da59a5-ab28-b676-4f81-add1e663fb7f"
+  }
+}

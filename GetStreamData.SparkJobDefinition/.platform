@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Dataflow",
-    "displayName": "Dataflow 1"
+    "type": "SparkJobDefinition",
+    "displayName": "GetStreamData",
+    "description": "Spark job definition"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "eae66d71-8b49-b7dd-4e77-e70ec3e1f66c"
+    "logicalId": "96e0bcc4-edb0-86c1-4b17-09dfa3a3ec7b"
   }
 }
